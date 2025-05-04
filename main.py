@@ -5,6 +5,10 @@ import os
 app = FastAPI()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+@app.get("/")
+async def root():
+    return {"status": "OCT AI backend is running"}
+
 @app.post("/analyze-oct/")
 async def analyze_oct(file: UploadFile = File(...)):
     od_diag = "Contorni foveali regolari"
